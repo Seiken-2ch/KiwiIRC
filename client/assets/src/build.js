@@ -207,8 +207,19 @@ fs.readdir(__dirname + '/translations', function (err, translation_files) {
  * Build the index.html file
  */
 
-var index_src = fs.readFileSync(__dirname + '/index.html.tmpl', FILE_ENCODING)
+if (config.get().custom_temp) {
+    var customVars = require('./../../../client/custom/configure.js').customVars;
+    var index_src = fs.readFileSync('client/custom/index.html.tmpl', FILE_ENCODING)
     .replace(new RegExp('<%base_path%>', 'g'), config.get().http_base_path || '/kiwi');
+    for (var i in customVars) {
+        index_src = index_src
+        .replace(new RegExp('<%'+i+'%>', 'g'), customVars[i]);
+    }
+} else {
+    var index_src = fs.readFileSync(__dirname + '/index.html.tmpl', FILE_ENCODING)
+    .replace(new RegExp('<%base_path%>', 'g'), config.get().http_base_path || '/kiwi');
+}
+
 
 fs.writeFile(__dirname + '/../../index.html', index_src, { encoding: FILE_ENCODING }, function (err) {
     if (!err) {

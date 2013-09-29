@@ -55,6 +55,10 @@ conf.identd = {
 // Where the client files are
 conf.public_http = "client/";
 
+// If use custom layout
+// Template and configuration are at /client/custom
+conf.custom_temp = false;
+
 // Max connections per connection. 0 to disable
 conf.max_client_conns = 5;
 

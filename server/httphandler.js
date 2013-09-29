@@ -51,6 +51,10 @@ HttpHandler.prototype.serve = function (request, response) {
 
     // Any asset request to head into the asset dir
     request.url = request.url.replace(base_path + '/assets/', '/assets/');
+    	
+	// Any custom request to head into the custom dir
+    request.url = request.url.replace(base_path + '/custom/', '/custom/');
+
 
     // Any requests for /client to load the index file
     if (request.url.match(new RegExp('^' + base_path_regex + '([/$]|$)', 'i'))) {
