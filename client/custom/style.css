@@ -119,7 +119,7 @@ html, body { height:100%; }
     height: 15px; width: 17px;
     overflow: hidden;
     font-size: 0;
-    background: url(../img/emoticons.png) no-repeat;
+    background: url(/assets/img/emoticons.png) no-repeat;
 }
 #kiwi .emoticon.smile { background-position:0px 0; }
 #kiwi .emoticon.sad { background-position:-25px 0; }
@@ -534,6 +534,7 @@ html, body { height:100%; }
 
 #kiwi .toolbar .panellist .active { padding-right:23px; border-top:2px solid #df6b26; border-bottom:none; }
 #kiwi .toolbar .panellist li .part:before { content:"\f00d"; }
+#kiwi .toolbar .panellist:not(.applets) li .part { display: none; }
 
 #kiwi .toolbar .panellist li.server span { padding-left: 5px; }
 #kiwi.connected .toolbar .panellist li.server:before { content: "\f0ec"; color:#3F9532; }
